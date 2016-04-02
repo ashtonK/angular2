@@ -14,7 +14,7 @@ Component decorator function takes a metadataobject.
 
 @Component({
 	selector: 'main-navbar',
-    templateUrl: 'templates/navbar.html'
+	templateUrl: 'templates/navbar.html'
 })
 export class MainNav { 
 	public title ='Navbar';
@@ -22,7 +22,7 @@ export class MainNav {
 } 
 @Component({
 	selector: 'app-body',
-    templateUrl: 'templates/body.html'
+	templateUrl: 'templates/body.html'
 })
 export class LoginScreen {
 	status = 'login';
@@ -36,12 +36,17 @@ export class LoginScreen {
 		console.log("Admin Mode");
 		this.status='admin';
 	}
+
 	nextpage(){
 		if(this.status==='login'){
 			this.status='agreement';
 		} else if(this.status ==='agreement'){
 			this.status='instruction';
 		}
+	}
+	resetPageDebug(){
+		console.log("Resetting to Login page");
+		this.status="login";
 	}
 
 }
