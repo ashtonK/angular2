@@ -13,11 +13,8 @@ imported from browser, not core. no single way to bootstrap app.
 /*
 Import Application root component
 */
-import {LoginScreen} from './app.component';
-import {MainNav} from './app.component';
-
-bootstrap(LoginScreen);
-bootstrap(MainNav);
+import {MainApp} from './mainapp';
+bootstrap(MainApp);
 /*
 Call Bootstrap with AppComponent.
 */

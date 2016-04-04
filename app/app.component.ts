@@ -1,15 +1,8 @@
-/*
-Reference the elements that we need.
-Angular apps are modular, many files each dedicate to purpose.
-Component Decorator function from main Angular library module
-*/
 import {Component} from 'angular2/core';
-
-/*
-
-Tells Angular what template to use and how to create component.
-Component decorator function takes a metadataobject.
-*/
+import {CandidateAgreementPageComponent} from './candidate-pages.component';
+import {CandidateLoginPageComponent} from './candidate-pages.component';
+import {CandidateInstructionsPageComponent} from './candidate-pages.component';
+import {PageInfo} from './page-info';
 
 
 @Component({
@@ -19,34 +12,32 @@ Component decorator function takes a metadataobject.
 export class MainNav { 
 	public title ='Navbar';
 
-} 
+}
 @Component({
 	selector: 'app-body',
-	templateUrl: 'templates/body.html'
+	templateUrl: 'templates/body.html',
+	directives: [CandidateAgreementPageComponent,CandidateLoginPageComponent,CandidateInstructionsPageComponent]
 })
-export class LoginScreen {
-	status = 'login';
-	adminPage = 'candidates';
+export class AppBody {
+	public pageStatus = {
+		current: "login"};
+		adminPage = 'candidates';
+		candidateName = 'Ashton';
 
-	adminPageSwitch(page){
-		console.log(page+" is the new admin page");
-		this.adminPage=page;
-	}
-	adminLogin(){
-		console.log("Admin Mode");
-		this.status='admin';
-	}
-
-	nextpage(){
-		if(this.status==='login'){
-			this.status='agreement';
-		} else if(this.status ==='agreement'){
-			this.status='instruction';
+		adminPageSwitch(page){
+			console.log(page+" is the new admin page");
+			this.adminPage=page;
 		}
-	}
-	resetPageDebug(){
-		console.log("Resetting to Login page");
-		this.status="login";
-	}
+		adminLogin(){
+			console.log("Admin Mode");
+			this.pageStatus.current='admin';
+		}
+		resetPageDebug(){
+			console.log("Resetting to Login page");
+			this.pageStatus.current="login";
+		}
+		logCurrentPage(){
+			console.log('currentPage '+ this.pageStatus.current);
+		}
 
-}
+	}

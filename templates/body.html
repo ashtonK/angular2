@@ -1,59 +1,10 @@
-<div [ngSwitch]="status" class="container">
-	<div *ngSwitchWhen="'login'" class="row">
-		<div class="Absolute-Center is-Responsive" id="login-container">
-			<div class="col-sm-12 col-md-10 col-md-offset-1">
-				<form action="" id="loginForm">
-					<div class="form-group input-group">
-						<label class="control-label col-sm-2" for="email">UserName:</label>
-						<input class="form-control" type="text" name='username' placeholder="username"/>          
-					</div>
-					<div class="form-group input-group">
-						<label class="control-label col-sm-2" for="pwd">Password:</label>
-						<input class="form-control" type="password" name='password' placeholder="password"/>     
-					</div>
-					<div class="checkbox">
-
-					</div>
-					<div class="form-group">
-						<button (click)="nextpage()"type="button" id="login-button" class="btn btn-def btn-block">Login</button>
-					</div>
-					<div class="form-group text-center">
-						<a href="#">Forgot Password</a>&nbsp;|&nbsp;<a (click)="adminLogin()" href="#">admin</a>
-					</div>
-				</form>        
-			</div>  
-		</div>    
-	</div>
-	<div *ngSwitchWhen="'agreement'" class="row">
-		<div class=" Absolute-Center is-Responsive" id="agreement-container">
-			<div class="well" id="agreement-box">
-				<p>
-					I Agree that A, and also B. I Agree that A, and also B. I Agree that A, and also B. I Agree that A, and also B. I Agree that A, and also B. I Agree that A, and also B. I Agree that A, and also B. I Agree that A, and also B. I Agree that A, and also B. I Agree that A, and also B. I Agree that A, and also B. I Agree that A, and also B. I Agree that A, and also B. I Agree that A, and also B. I Agree that A, and also B. I Agree that A, and also B. I Agree that A, and also B. I Agree that A, and also B. I Agree that A, and also B. I Agree that A, and also B. I Agree that A, and also B. I Agree that A, and also B. I Agree that A, and also B. I Agree that A, and also B. I Agree that A, and also B. I Agree that A, and also B. I Agree that A, and also B.
-					I Agree that A, and also B. I Agree that A, and also B. I Agree that A, and also B. I Agree that A, and also B. I Agree that A, and also B. I Agree that A, and also B. I Agree that A, and also B. I Agree that A, and also B. I Agree that A, and also B. I Agree that A, and also B. I Agree that A, and also B. I Agree that A, and also B. I Agree that A, and also B. I Agree that A, and also B. I Agree that A, and also B. I Agree that A, and also B. I Agree that A, and also B. I Agree that A, and also B. I Agree that A, and also B. I Agree that A, and also B. I Agree that A, and also B. I Agree that A, and also B. I Agree that A, and also B. I Agree that A, and also B. I Agree that A, and also B. I Agree that A, and also B. I Agree that A, and also B. 
-					I Agree that A, and also B. I Agree that A, and also B. I Agree that A, and also B. I Agree that A, and also B. I Agree that A, and also B. I Agree that A, and also B. I Agree that A, and also B. I Agree that A, and also B. I Agree that A, and also B. I Agree that A, and also B. I Agree that A, and also B. I Agree that A, and also B. I Agree that A, and also B. I Agree that A, and also B. I Agree that A, and also B. I Agree that A, and also B. I Agree that A, and also B. I Agree that A, and also B. I Agree that A, and also B. I Agree that A, and also B. I Agree that A, and also B. I Agree that A, and also B. I Agree that A, and also B. I Agree that A, and also B. I Agree that A, and also B. I Agree that A, and also B. I Agree that A, and also B.  
-				</p> 
-			</div>  
-			<form>
-				<button (click)="nextpage()" type="button" id="login-button" class="btn center-block">I Agree to the Terms and Conditions</button>
-			</form>
-		</div>    
-	</div>
-
-
-	<div *ngSwitchWhen="'instruction'" class="row">
-		<div class=" Absolute-Center is-Responsive" id="instruction-container">
-			<div class="well " id="instruction-box">
-				<p>
-					-The Test will take 75 Minutes,
-					-You can submit the Test at any point, but you will not be able to adjust your response after submission.
-					-Be sure to optimize your code and exclude any unncessary declarations
-				</p> 
-			</div>  
-			<form>
-				<button type="button" id="login-button" class="btn center-block">Begin Test</button>
-			</form>
-		</div>    
-	</div>
+<div>
+	<p> Welcome {{candidateName}}</p>
+</div>
+<div [ngSwitch]="pageStatus.current" class="container">
+	<candidate-login-page [page]="pageStatus" *ngSwitchWhen="'login'"></candidate-login-page>
+	<candidate-agreement-page [page]="pageStatus" *ngSwitchWhen="'agreement'"></candidate-agreement-page>
+	<candidate-instructions-page [page]="pageStatus" *ngSwitchWhen="'instruction'"></candidate-instructions-page>
 	<div *ngSwitchWhen="'admin'" class="row" id="admin-menu">
 		<ul class="nav nav-pills ">
 			<li><a (click)="adminPageSwitch('candidates')" href="#admin-candidate-page">Candidates</a></li>
@@ -214,4 +165,5 @@
 			</div>
 		</div>
 	</div>
+	<button (click)="logCurrentPage()">Debug</button>
 </div>
