@@ -1,5 +1,6 @@
 import{Component, Input} from 'angular2/core';
 import {PageInfo} from './page-info';
+import {LoginCred} from './page-info';
 @Component({
 	selector: 'candidate-login-page',
 	templateUrl: 'templates/candidate-login-page.html'
@@ -7,11 +8,21 @@ import {PageInfo} from './page-info';
 export class CandidateLoginPageComponent{
 	@Input()
 	page : PageInfo;
+	login= new LoginCred("username", "password");
 
-	nextPage(){
-		this.page.current='agreement';
-		console.log("page ="+ this.page.current);
+	checkLogin(){
+		//mock login
+		if(this.login.username==="akim" && this.login.password==="1234"){
+
+			this.page.current="agreement";
+			console.log("Going to Agreement");	
+		}else{console.log("Wrong Login Credentials")}
 	}
+	adminLogin(){
+			console.log("Admin Mode");
+			this.page.current='admin';
+		}
+
 }
 @Component({
 	selector: 'candidate-agreement-page',

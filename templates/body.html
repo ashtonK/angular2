@@ -1,6 +1,3 @@
-<div>
-	<p> Welcome {{candidateName}}</p>
-</div>
 <div [ngSwitch]="pageStatus.current" class="container">
 	<candidate-login-page [page]="pageStatus" *ngSwitchWhen="'login'"></candidate-login-page>
 	<candidate-agreement-page [page]="pageStatus" *ngSwitchWhen="'agreement'"></candidate-agreement-page>
@@ -165,5 +162,4 @@
 			</div>
 		</div>
 	</div>
-	<button (click)="logCurrentPage()">Debug</button>
 </div>
