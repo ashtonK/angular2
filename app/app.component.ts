@@ -2,6 +2,7 @@ import {Component, Input} from 'angular2/core';
 import {CandidateAgreementPageComponent} from './candidate-pages.component';
 import {CandidateLoginPageComponent} from './candidate-pages.component';
 import {CandidateInstructionsPageComponent} from './candidate-pages.component';
+import {AdminPage} from './admin-page.component';
 import {PageInfo} from './page-info';
 
 @Component({
@@ -20,19 +21,17 @@ export class MainNav {
 @Component({
 	selector: 'app-body',
 	templateUrl: 'templates/body.html',
-	directives: [CandidateAgreementPageComponent,CandidateLoginPageComponent,CandidateInstructionsPageComponent]
+	directives: [CandidateAgreementPageComponent,CandidateLoginPageComponent,CandidateInstructionsPageComponent,AdminPage]
 })
 export class AppBody {
 	@Input()
 	pageStatus:PageInfo;
-	adminPage = 'candidates';
+	adminPage = new PageInfo("candidates");
 	candidateName = 'Ashton';
 
 	logCurrentPage(){
 		console.log('currentPage '+ this.pageStatus.current);
 	}
-	adminPageSwitch(adminpage){
-		this.adminPage=adminpage;
-	}
+	
 
 }

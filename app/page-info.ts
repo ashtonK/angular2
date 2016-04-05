@@ -7,7 +7,7 @@ export class PageInfo{
 export class LoginCred{
 	username: string;
 	password: string;
-	constructor(public userName, public passWord){
+	constructor(public userName, public passWord,public status){
 		this.username=userName;
 		this.password=passWord;
 	}
