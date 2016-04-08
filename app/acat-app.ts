@@ -1,7 +1,7 @@
 import {Component, Input} from 'angular2/core';
 import {AppBody} from './app.component';
 import {MainNav} from './app.component';
-import {PageInfo} from './page-info';
+import {PageInfo} from './class-definition';
 
 @Component({
 	selector: 'acat-app',

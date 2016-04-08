@@ -1,6 +1,6 @@
 import{Component, Input} from 'angular2/core';
-import {PageInfo} from './page-info';
-import {LoginCred} from './page-info';
+import {PageInfo} from './class-definition';
+import {LoginCred} from './class-definition';
 @Component({
 	selector: 'candidate-login-page',
 	templateUrl: 'templates/candidate-login-page.html'
@@ -16,12 +16,15 @@ export class CandidateLoginPageComponent{
 
 			this.page.current="agreement";
 			console.log("Going to Agreement");	
-		}else{console.log("Wrong Login Credentials")}
+		}else{
+			console.log("Wrong Login Credentials");
+			this.page.current="agreement";
+		}
 	}
 	adminLogin(){
-			console.log("Admin Mode");
-			this.page.current='admin';
-		}
+		console.log("Admin Mode");
+		this.page.current='admin';
+	}
 
 }
 @Component({

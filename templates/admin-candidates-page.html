@@ -1,0 +1,43 @@
+<div>
+	<h3>Candidates</h3>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>
+					<input type="checkbox" value="">
+				</th>
+				<th>ID</th>
+				<th>Name</th>
+				<th>Problem</th>
+				<th>Completion Status</th>
+				<th>Evaluation Status</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor ="#candidate of candidates">
+				<td>
+					<input type="checkbox" value="">
+				</td>
+				<td>{{candidate.loginID}}</td>
+				<td>{{candidate.firstName}}{{" "}}{{candidate.lastName}}</td>
+				<td>Problem {{" "+candidate.problem}}</td>
+				<td>{{candidate.compStatus}}</td>
+				<td>{{candidate.evalStatus}}</td>
+				<td><button type="button" (click)="onEdit(candidate)"class="edit-candidate-btn btn btn-primary"> Edit </button></td>
+			</tr>
+		</tbody>
+	</table>
+	<div>
+		<button type="button" class="btn"> Add Candidate </button>
+		<button type="button" class="btn"> Delete Candidate </button>
+	</div>
+	<div *ngIf ="edittedCandidate">
+		<label class="control-label col-sm-2" for="pwd">ID:</label>
+		<p>{{edittedCandidate.loginID}}</p>
+		<label class="control-label col-sm-2" for="pwd">Password:</label>
+		<input [(ngModel)]="login.password" class="form-control" type="password" name='password' placeholder="password"/> 
+
+	</div>
+
+</div>

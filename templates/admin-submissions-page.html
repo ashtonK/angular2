@@ -1,0 +1,31 @@
+<div>
+	<h3>Submissions</h3>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>
+					<input type="checkbox" value="">
+				</th>
+				<th>ID</th>
+				<th>Name</th>
+				<th>Problem</th>
+				<th>Evaluation Status</th>
+				<th>Submission</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor ="#submission of submissions" >
+				<td>
+					<input type="checkbox" value="">
+				</td>
+				<td>{{submission.loginID}}</td>
+				<td>{{submission.firstName+" "+submission.lastName}}</td>
+				<td><a href="#"> Problem {{submission.problem}}</a></td>
+				<td>{{submission.evalStatus}}</td>
+				<td><button type="button" class="view-file-btn btn btn-primary"> View </button></td>
+			</tr>
+		</tbody>
+	</table>
+
+</div>

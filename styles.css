@@ -1,6 +1,6 @@
 #mainnav{
-	background-color: #FFFFFF ;
-	border-color: #FFFFFF ;	
+	background-color: #222625 ;
+	border-color: #222625 ;	
 	margin-bottom: 0;
 
 }
@@ -17,17 +17,31 @@
 }
 #login-container{
 	background-color:#FFFFFF;
+	border-style: solid;
+	border-color: #222625;
+	margin-top: 50px;	
 	height:300px;
 	max-width: 450px;
+	position: relative;
 }
 #agreement-container{
 	background-color:#FFFFFF;
-	height:450px;
+	border-style: solid;
+	border-color: #222625;
+	margin-top: 50px;	
+	min-height: 470px;
+	max-width: 600px;
+	position: relative;
 	
 }
 #instruction-container{
 	background-color:#FFFFFF;
-	height:450px;
+	border-style: solid;
+	border-color: #222625;
+	margin-top: 50px;	
+	min-height: 450px;
+	max-width: 600px;
+	position: relative;
 	
 }
 #instruction-box{
@@ -53,9 +67,7 @@
 	max-width: 600px;
 	padding: 40px;
 }
-#admin-menu{
-	background-color:#FFFFFF;
-}
 .edit-candidate-btn{
 	background-color: #0C3D84 ;
 }
+

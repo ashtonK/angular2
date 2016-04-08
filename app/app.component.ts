@@ -3,7 +3,7 @@ import {CandidateAgreementPageComponent} from './candidate-pages.component';
 import {CandidateLoginPageComponent} from './candidate-pages.component';
 import {CandidateInstructionsPageComponent} from './candidate-pages.component';
 import {AdminPage} from './admin-page.component';
-import {PageInfo} from './page-info';
+import {PageInfo} from './class-definition';
 
 @Component({
 	selector: 'main-navbar',

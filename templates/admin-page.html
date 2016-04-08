@@ -1,160 +1,52 @@
-<div  class="row" id="admin-menu">
-	<ul class="nav nav-pills ">
-		<li><a (click)="adminPageSwitch('candidates')" href="#admin-candidate-page">Candidates</a></li>
-		<li><a (click)="adminPageSwitch('submissions')"href="#admin-submission-page">Submissions</a></li>
-		<li><a (click)="adminPageSwitch('problems')"href="#">Problems</a></li>
-		<li><a (click)="adminPageSwitch('reports')"href="#">Reports</a></li>
-	</ul>
-	<div [ngSwitch]="adminPage.current">
-		<div *ngSwitchWhen="'candidates'" >
-			<h3>Candidates</h3>
-			<table class="table">
-				<thead>
-					<tr>
-						<th>
-							<input type="checkbox" value="">
-						</th>
-						<th>ID</th>
-						<th>Name</th>
-						<th>Problem</th>
-						<th>Completion Status</th>
-						<th>Evaluation Status</th>
-						<th></th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>
-							<input type="checkbox" value="">
-						</td>
-						<td>akim6</td>
-						<td>Ashton Kim</td>
-						<td>Problem 23</td>
-						<td>Complete</td>
-						<td>In Testing</td>
-						<td><button type="button" class="edit-candidate-btn btn btn-primary"> Edit </button></td>
-					</tr>
-					<tr>
-						<td>
-							<input type="checkbox" value="">
-						</td>
-						<td>acato</td>
-						<td>Anthony Cato</td>
-						<td>Problem 4</td>
-						<td>In Progress</td>
-						<td>Pending</td>
-						<td><button type="button" class="edit-candidate-btn btn btn-primary"> Edit </button></td>
-					</tr>
-					<tr>
-						<td>
-							<input type="checkbox" value="">
-						</td>
-						<td>sdua</td>
-						<td>Sonal Dua</td>
-						<td>Problem 3</td>
-						<td>Not Initiated</td>
-						<td>Not Received</td>
-						<td><button type="button" class="edit-candidate-btn btn btn-primary"> Edit </button></td>
-					</tr>
-				</tbody>
-			</table>
-			<div>
-				<button type="button" class="btn"> Add Candidate </button>
-				<button type="button" class="btn"> Delete Candidate </button>
-			</div>
 
-		</div>
-		<div *ngSwitchWhen="'submissions'" >
-			<h3>Submissions</h3>
-			<table class="table">
-				<thead>
-					<tr>
-						<th>
-							<input type="checkbox" value="">
-						</th>
-						<th>ID</th>
-						<th>Name</th>
-						<th>Problem</th>
-						<th>Evaluation Status</th>
-						<th>Submission</th>
-						<th></th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>
-							<input type="checkbox" value="">
-						</td>
-						<td>akim6</td>
-						<td>Ashton Kim</td>
-						<td><a href="#"> Problem 23</a></td>
-						<td>In Testing</td>
-						<td><button type="button" class="view-file-btn btn btn-primary"> View </button></td>
-					</tr>
-					<tr>
-						<td>
-							<input type="checkbox" value="">
-						</td>
-						<td>acato</td>
-						<td>Anthony Cato</td>
-						<td><a href="#"> Problem 4</a></td>
-						<td>Pending</td>
-						<td><button type="button" class="view-file-btn btn btn-primary"> View </button></td>
-					</tr>
-					<tr>
-						<td>
-							<input type="checkbox" value="">
-						</td>
-						<td>sdua</td>
-						<td>Sonal Dua</td>
-						<td><a href="#"> Problem 3</a></td>
-						<td>Not Received</td>
-						<td><button type="button" class="edit-candidate-btn btn btn-primary"> View </button></td>
-					</tr>
-				</tbody>
-			</table>
-
-		</div>
-		<div *ngSwitchWhen="'problems'" >
-			<h3>Problems</h3>
-			<table class="table">
-				<thead>
-					<tr>
-						<th>Problem # </th>
-						<th>Domain</th>
-						<th>Assignees</th>
-						<th>View Problem</th>
-						<th><button type="button" class="view-file-btn btn btn-primary"> Edit </button></th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>3</td>
-						<td>Java</td>
-						<td><a href="#"> View</a></td>
-						<td><a href="#"> View</a></td>
-						<td><button type="button" class="view-file-btn btn btn-primary"> Edit </button></td>
-					</tr>
-					<tr>
-						<td>4</td>
-						<td>Java</td>
-						<td><a href="#"> View</a></td>
-						<td><a href="#"> View</a></td>
-						<td><button type="button" class="view-file-btn btn btn-primary"> Edit </button></td>
-					</tr>
-					<tr>
-						<td>23</td>
-						<td>Java</td>
-						<td><a href="#"> View</a></td>
-						<td><a href="#"> View</a></td>
-						<td><button type="button" class="view-file-btn btn btn-primary"> Edit </button></td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-		<div *ngSwitchWhen="'reports'" >
-			<h3>Reports</h3>
-			<p>Report Place</p>
-		</div>
+<ul class="nav nav-tabs nav-justified admin-nav-pill">
+	<li ><a (click)="adminPageSwitch('candidates')" href="#admin-candidate-page">Candidates</a></li>
+	<li ><a (click)="adminPageSwitch('submissions')"href="#admin-submission-page">Submissions</a></li>
+	<li ><a (click)="adminPageSwitch('problems')"href="#">Problems</a></li>
+	<li ><a (click)="adminPageSwitch('reports')"href="#">Reports</a></li>
+</ul>
+<div [ngSwitch]="adminPage.current">
+	<admin-candidates-page [adminpage]="adminPage" *ngSwitchWhen="'candidates'"></admin-candidates-page>
+	<admin-submissions-page [adminpage]="adminPage" *ngSwitchWhen="'submissions'"></admin-submissions-page>
+	<div *ngSwitchWhen="'problems'" >
+		<h3>Problems</h3>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Problem # </th>
+					<th>Domain</th>
+					<th>Assignees</th>
+					<th>View Problem</th>
+					<th><button type="button" class="view-file-btn btn btn-primary"> Edit </button></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>3</td>
+					<td>Java</td>
+					<td><a href="#"> View</a></td>
+					<td><a href="#"> View</a></td>
+					<td><button type="button" class="view-file-btn btn btn-primary"> Edit </button></td>
+				</tr>
+				<tr>
+					<td>4</td>
+					<td>Java</td>
+					<td><a href="#"> View</a></td>
+					<td><a href="#"> View</a></td>
+					<td><button type="button" class="view-file-btn btn btn-primary"> Edit </button></td>
+				</tr>
+				<tr>
+					<td>23</td>
+					<td>Java</td>
+					<td><a href="#"> View</a></td>
+					<td><a href="#"> View</a></td>
+					<td><button type="button" class="view-file-btn btn btn-primary"> Edit </button></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div *ngSwitchWhen="'reports'" >
+		<h3>Reports</h3>
+		<p>Report PlaceHolder</p>
 	</div>
 </div>
