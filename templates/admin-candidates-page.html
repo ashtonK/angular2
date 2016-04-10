@@ -29,15 +29,65 @@
 		</tbody>
 	</table>
 	<div>
-		<button type="button" class="btn"> Add Candidate </button>
-		<button type="button" class="btn"> Delete Candidate </button>
-	</div>
-	<div *ngIf ="edittedCandidate">
-		<label class="control-label col-sm-2" for="pwd">ID:</label>
-		<p>{{edittedCandidate.loginID}}</p>
-		<label class="control-label col-sm-2" for="pwd">Password:</label>
-		<input [(ngModel)]="login.password" class="form-control" type="password" name='password' placeholder="password"/> 
+		<button (click) ="openAddCandidate()" type="button" class="btn"> Add Candidate </button>
 
 	</div>
+	<div class="admin-subbox" *ngIf="edittedCandidate">
+		<div class="form-group">
+			<h3>Edit Candidate</h3>
+			<div class="row">
+				<div class=" col-xs-4">
+					<label for="edit-first-name" >First Name:</label>
+					<input [(ngModel)]="edittedCandidate.firstName" class="form-control" id="edit-first-name">
+				</div>
+				<div class=" col-xs-4"> 
+					<label for="edit-last-name" >Last Name:</label>
+					<input [(ngModel)]="edittedCandidate.lastName" class="form-control" id="edit-last-name">
+				</div>
+			</div>
+			<div class="row">		
+				<div class=" col-xs-4">
+					<label for="edit-login-id" >ID:</label>
+					<input [(ngModel)]="edittedCandidate.loginID" class="form-control" id="edit-login-id">
+				</div>
+				<div class=" col-xs-4">
+					<label for="edit-assigned-problem" >Problem:</label>
+					<select [(ngModel)]="edittedCandidate.problem" class="form-control" id="edit-assigned-problem">
+						<option *ngFor="#problem of problemList">{{problem.problemID}}</option>
+					</select>
+				</div>
+			</div>
+			<button (click)="doneEdit()" type="button" class=" btn btn-primary"> Done </button>
+			<button (click) ="deleteCandidate(edittedCandidate.loginID)" type="button" class="btn"> Delete Candidate </button>
+		</div>
+	</div>
+	<div *ngIf="addedCandidate">
+		<div class="form-group">
+			<h3>Add Candidate</h3>
+			<div class="row">
+				<div class=" col-xs-4">
+					<label for="edit-first-name" >First Name:</label>
+					<input [(ngModel)]="addedCandidate.firstName" class="form-control" id="edit-first-name">
+				</div>
+				<div class=" col-xs-4"> 
+					<label for="edit-last-name" >Last Name:</label>
+					<input [(ngModel)]="addedCandidate.lastName" class="form-control" id="edit-last-name">
+				</div>
+			</div>
+			<div class="row">		
+				<div class=" col-xs-4">
+					<label for="edit-login-id" >ID:</label>
+					<input [(ngModel)]="addedCandidate.loginID" class="form-control" id="edit-login-id">
+				</div>
+				<div class=" col-xs-4">
+					<label for="edit-assigned-problem" >Problem:</label>
+					<select [(ngModel)]="addedCandidate.problem" class="form-control" id="edit-assigned-problem">
+						<option *ngFor="#problem of problemList">{{problem.problemID}}</option>
+					</select>
+				</div>
+			</div>
+			<button (click)="addCandidate()" type="button" class=" btn btn-primary"> Add Candidate </button>
+		</div>
 
+	</div>
 </div>

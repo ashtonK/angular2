@@ -5,20 +5,64 @@
 			<tr>
 				<th>Problem # </th>
 				<th>Domain</th>
+				<th>Problem Level</th>
 				<th>Assignees</th>
-				<th>View Problem</th>
-				<th><button type="button" class="view-file-btn btn btn-primary"> Edit </button></th>
+				<th>View/Edit Problem</th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr *ngFor="#problem of problems">
-				<td>3</td>
-				<td>Java</td>
-				<td><a href="#"> View</a></td>
-				<td><a href="#"> View</a></td>
-				<td><button type="button" class="view-file-btn btn btn-primary"> Edit </button></td>
+				<td>{{problem.problemID}}</td>
+				<td>{{problem.problemDomain}}</td>
+				<td>{{problem.problemLevel}}</td>
+				<td><a href="#" (click)="displayList(problem.problemID)"> View</a></td>
+				<td><button (click)="displayProblem(problem)" type="button" class="view-file-btn btn btn-primary"> Edit </button></td>
 			</tr>
 
 		</tbody>
 	</table>
+	<div>
+		<button (click)="openAddProblem()"type="button" class="btn"> Add Problem </button>
+	</div>
+
+	<div *ngIf="candidateList">
+		<ul>
+			<li *ngFor="#candidate of candidateList">
+				{{candidate.name}}
+			</li>
+
+		</ul>
+	</div>
+	<div class="admin-subbox" *ngIf="edittedProblem">
+		<div class="form-group">
+			<h3>Edit Problem</h3>
+			<label for="usr">Problem {{edittedProblem.problemID}}</label>
+
+			<div class="form-group">
+				<label for="pwd">Domain:</label>
+				<input [(ngModel)]="edittedProblem.problemDomain" class="form-control" >
+			</div>
+			<label for="comment">Comment:</label>
+			<textarea [(ngModel)]="edittedProblem.problemContents" class="form-control" rows="5" id="comment"></textarea>
+			<button (click)="doneDisplayProblem()" type="button" class=" btn btn-primary"> Done </button>
+		</div>
+	</div>
+	<div *ngIf="addedProblem">
+		<div class="form-group">
+			<h3>Add Problem</h3>
+			<div class="form-group">
+				<label for="pwd">ID:</label>
+				<input [(ngModel)]="addedProblem.problemID" class="form-control" >
+			</div>
+			<div class="form-group">
+				<label for="pwd">Domain:</label>
+				<input [(ngModel)]="addedProblem.problemDomain" class="form-control" >
+			</div>
+			<label for="comment">Comment:</label>
+			<textarea [(ngModel)]="addedProblem.problemContents" class="form-control" rows="5" id="comment"></textarea>
+			<button (click)="addProblem()" type="button" class=" btn btn-primary"> Add Problem</button>
+			<button (click)="cancelAddProblem()" type="button" class=" btn btn-primary"> Cancel </button>
+		</div>
+
+	</div>
 </div>

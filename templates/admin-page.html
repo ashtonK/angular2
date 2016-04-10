@@ -1,50 +1,14 @@
 
 <ul class="nav nav-tabs nav-justified admin-nav-pill">
-	<li ><a (click)="adminPageSwitch('candidates')" href="#admin-candidate-page">Candidates</a></li>
-	<li ><a (click)="adminPageSwitch('submissions')"href="#admin-submission-page">Submissions</a></li>
-	<li ><a (click)="adminPageSwitch('problems')"href="#">Problems</a></li>
+	<li ><a (click)="adminPageSwitch('candidates')" href="#admin-candidates-page">Candidates</a></li>
+	<li ><a (click)="adminPageSwitch('submissions')"href="#admin-submissions-page">Submissions</a></li>
+	<li ><a (click)="adminPageSwitch('problems')"href="#admin-problems-page">Problems</a></li>
 	<li ><a (click)="adminPageSwitch('reports')"href="#">Reports</a></li>
 </ul>
 <div [ngSwitch]="adminPage.current">
 	<admin-candidates-page [adminpage]="adminPage" *ngSwitchWhen="'candidates'"></admin-candidates-page>
 	<admin-submissions-page [adminpage]="adminPage" *ngSwitchWhen="'submissions'"></admin-submissions-page>
-	<div *ngSwitchWhen="'problems'" >
-		<h3>Problems</h3>
-		<table class="table">
-			<thead>
-				<tr>
-					<th>Problem # </th>
-					<th>Domain</th>
-					<th>Assignees</th>
-					<th>View Problem</th>
-					<th><button type="button" class="view-file-btn btn btn-primary"> Edit </button></th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>3</td>
-					<td>Java</td>
-					<td><a href="#"> View</a></td>
-					<td><a href="#"> View</a></td>
-					<td><button type="button" class="view-file-btn btn btn-primary"> Edit </button></td>
-				</tr>
-				<tr>
-					<td>4</td>
-					<td>Java</td>
-					<td><a href="#"> View</a></td>
-					<td><a href="#"> View</a></td>
-					<td><button type="button" class="view-file-btn btn btn-primary"> Edit </button></td>
-				</tr>
-				<tr>
-					<td>23</td>
-					<td>Java</td>
-					<td><a href="#"> View</a></td>
-					<td><a href="#"> View</a></td>
-					<td><button type="button" class="view-file-btn btn btn-primary"> Edit </button></td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
+	<admin-problems-page [adminpage]="adminPage" *ngSwitchWhen="'problems'"></admin-problems-page>
 	<div *ngSwitchWhen="'reports'" >
 		<h3>Reports</h3>
 		<p>Report PlaceHolder</p>
